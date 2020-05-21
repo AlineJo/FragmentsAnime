@@ -25,7 +25,7 @@ public class SimpleAnimationActivity extends AppCompatActivity implements Mediat
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right);
         ft.replace(R.id.fl_host, fragmentToDisplay, tag);
         if (fm.findFragmentByTag(tag) == null) {
             ft.addToBackStack(tag);
