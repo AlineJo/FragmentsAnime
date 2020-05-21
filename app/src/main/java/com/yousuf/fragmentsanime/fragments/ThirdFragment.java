@@ -1,34 +1,53 @@
 package com.yousuf.fragmentsanime.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
 import com.yousuf.fragmentsanime.R;
+import com.yousuf.fragmentsanime.interfaces.MediatorInterface;
 
 public class ThirdFragment extends Fragment {
 
+    private MediatorInterface mListener;
+
+    public ThirdFragment() {
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof MediatorInterface) {
+            mListener = (MediatorInterface) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement MediatorInterface");
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_third, container, false);
+        View parentView = inflater.inflate(R.layout.fragment_third, container, false);
+
+        Button btnNext = parentView.findViewById(R.id.btn_next);
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mListener != null) {
+                    mListener.changeFragmentTo(new FirstFragment(), FirstFragment.class.getSimpleName());
+                }
+            }
+        });
+
+        return parentView;
     }
 
-
-/*    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }*/
 
 }
