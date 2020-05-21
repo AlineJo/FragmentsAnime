@@ -32,4 +32,23 @@ public class SimpleAnimationActivity extends AppCompatActivity implements Mediat
         }
         ft.commit();
     }
+
+    /**
+     * @return BackStackEntryCount
+     */
+    private int getStackCount() {
+        return getSupportFragmentManager().getBackStackEntryCount();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getStackCount() <= 1) {
+            finish();
+        } else {
+            super.onBackPressed();
+        }
+
+    }
+
+
 }
