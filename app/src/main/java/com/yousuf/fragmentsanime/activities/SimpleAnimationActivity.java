@@ -1,10 +1,12 @@
-package com.yousuf.fragmentsanime;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.yousuf.fragmentsanime.activities;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.yousuf.fragmentsanime.R;
+
+public class SimpleAnimationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
